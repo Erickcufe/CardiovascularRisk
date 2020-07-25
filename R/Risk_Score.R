@@ -12,10 +12,6 @@
 #' @return
 #' A data.frame with the Score of risk level of Cardiovascular Disease
 #'
-#' @author
-#' Erick Cuevas-Fernández
-#'
-#'
 #'
 #' @examples
 #' Risk_Score(diabetes = 1, gender = 0, smoke = 1, age = 60,
@@ -120,12 +116,10 @@ Risk_Score.vector <- function(diabetes, gender, smoke, age, sbp, cholesterol){
 
 #' Risk Score
 #'
-#' A function that return the risk level of Cardiovascular Disease in Central Latin America. Based on WHO cardiovascular disease risk.
 #'
 #' @param df A dataframe with columns in the following order: Diabetes (0 = non-diabetic, 1 = diabetic), Gender (0 = female, 1 = male), Smoke (0 = non-smoker, 1 = smoker), age (year) , sbp (Sytolic Blood Pressure in mmHG), cholesterol (Total cholesterol in mmol / l)
 #'
-#' @return
-#' A data.frame with the Score of risk level of Cardiovascular Disease
+#' @return \code{NULL}
 #'
 #' @author
 #' Erick Cuevas-Fernández

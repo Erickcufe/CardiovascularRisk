@@ -32,11 +32,9 @@ A data.frame with the Score of risk level of Cardiovascular Disease
 
 \code{NULL}
 
-A data.frame with the Score of risk level of Cardiovascular Disease
+\code{NULL}
 }
 \description{
-A function that return the risk level of Cardiovascular Disease in Central Latin America. Based on WHO cardiovascular disease risk.
-
 A function that return the risk level of Cardiovascular Disease in Central Latin America. Based on WHO cardiovascular disease risk.
 }
 \examples{
@@ -62,7 +60,5 @@ Risk_Score.vector(df)
 
 }
 \author{
-Erick Cuevas-Fernández
-
 Erick Cuevas-Fernández
 }
