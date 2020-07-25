@@ -43,7 +43,7 @@ A data.frame with the Score of risk level of Cardiovascular Disease
 A function that return the risk level of Cardiovascular Disease in Central Latin America. Based on WHO cardiovascular disease risk.
 }
 \examples{
-Risk_Score(diabetes = 1, gender = 0, smoke = 1, age = 60,
+Risk_Score(diabetes = 1, gender = 0, smoke = 1, age = 60, sbp = 169, cholesterol = 8)
 
 Age <- c(44, 57, 66, 50, 71, 37)
 Gender <- c(0,1,0,1,1, 1)

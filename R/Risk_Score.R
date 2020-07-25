@@ -14,8 +14,7 @@
 #'
 #'
 #' @examples
-#' Risk_Score(diabetes = 1, gender = 0, smoke = 1, age = 60,
-#                              sbp = 169, cholesterol = 8)
+#' Risk_Score(diabetes = 1, gender = 0, smoke = 1, age = 60, sbp = 169, cholesterol = 8)
 #'
 #' Age <- c(44, 57, 66, 50, 71, 37)
 #' Gender <- c(0,1,0,1,1, 1)
