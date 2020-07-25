@@ -85,30 +85,23 @@ Risk_Score.vector <- function(diabetes, gender, smoke, age, sbp, cholesterol){
 
   if(length(which(df$Age == 8)) > 0){
     thebad <- which(df$Age == 8)
-    message(paste("The patient number:", which(df$Age == 8), "has the age out of range to calculate the risk score"))
-    df <- df[df$Age!= 8, ]
+    message(paste("The patient number:", paste(which(df$Age == 8), collapse = ","), "has the age out of range to calculate the risk score"))
+    # df <- df[df$Age!= 8, ]
   }
-
   select <- vector()
   for (i in 1:nrow(df)) {
-
-    dat <- CardiovascularRisk::ref1
-    select[i] <- dat[dat$Diabetes == df$Diabetes[i] & dat$Gender == df$Gender[i] &
-                       dat$Smoke == df$Smoke[i] & dat$Age == df$Age[i] &
-                       dat$SBP == df$SBP[i] & dat$Cholesterol == df$Total_Cholesterol[i],
-                     "Score"]
-
+    if(df$Age[i] == 8){
+      select[i] <- "NR"
+    } else {
+      dat <- CardiovascularRisk::ref1
+      select[i] <- dat[dat$Diabetes == df$Diabetes[i] & dat$Gender == df$Gender[i] &
+                         dat$Smoke == df$Smoke[i] & dat$Age == df$Age[i] &
+                         dat$SBP == df$SBP[i] & dat$Cholesterol == df$Total_Cholesterol[i],
+                       "Score"]
+    }
   }
 
-  if(length(thebad) > 0){
-  ver1 <- append(select, "NR", after = thebad)
-  result <- data.frame(df_dummy, Score = ver1)
-  } else {
-
-    result <- data.frame(df_dummy, Score = select)
-
-  }
-
+  result <- data.frame(df_dummy, Score = select)
   return(result)
 
 }
@@ -135,7 +128,7 @@ Risk_Score.vector <- function(diabetes, gender, smoke, age, sbp, cholesterol){
 #' cholesterol <- c(0, 5.8, 6.5, 0, 7.2, 6)
 #' df <- data.frame(Diabetes, Gender, Smoking, Age, Systolic_Blood_Pressure, cholesterol)
 #'
-#' Risk_Score.vector(df)
+#' Risk_Score(df)
 #'
 #' @rdname Risk_Score
 #' @export
@@ -184,35 +177,26 @@ Risk_Score.data.frame <- function(df){
 
   if(length(which(df$Age == 8)) > 0){
     thebad <- which(df$Age == 8)
-    message(paste("The patient number:", which(df$Age == 8), "has the age out of range to calculate the risk score"))
-    df <- df[df$Age!= 8, ]
+    message(paste("The patient number:", paste(which(df$Age == 8), collapse = ","), "has the age out of range to calculate the risk score"))
+    # df <- df[df$Age!= 8, ]
   }
-
   select <- vector()
   for (i in 1:nrow(df)) {
-
-    dat <- CardiovascularRisk::ref1
-    select[i] <- dat[dat$Diabetes == df$Diabetes[i] & dat$Gender == df$Gender[i] &
-                       dat$Smoke == df$Smoke[i] & dat$Age == df$Age[i] &
-                       dat$SBP == df$SBP[i] & dat$Cholesterol == df$Total_Cholesterol[i],
-                     "Score"]
-
+    if(df$Age[i] == 8){
+      select[i] <- "NR"
+    } else {
+      dat <- CardiovascularRisk::ref1
+      select[i] <- dat[dat$Diabetes == df$Diabetes[i] & dat$Gender == df$Gender[i] &
+                         dat$Smoke == df$Smoke[i] & dat$Age == df$Age[i] &
+                         dat$SBP == df$SBP[i] & dat$Cholesterol == df$Total_Cholesterol[i],
+                       "Score"]
+    }
   }
 
-  if(length(thebad) > 0){
-    ver1 <- append(select, "NR", after = thebad)
-    result <- data.frame(df_old, Score = ver1)
-  } else {
-
-    result <- data.frame(df_old, Score = select)
-
-  }
-
+  result <- data.frame(df_old, Score = select)
   return(result)
 
 
 }
-
-
 
 

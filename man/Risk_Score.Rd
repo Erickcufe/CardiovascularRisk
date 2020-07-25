@@ -56,7 +56,7 @@ Diabetes <- c(1,1,1,0,1, 1)
 cholesterol <- c(0, 5.8, 6.5, 0, 7.2, 6)
 df <- data.frame(Diabetes, Gender, Smoking, Age, Systolic_Blood_Pressure, cholesterol)
 
-Risk_Score.vector(df)
+Risk_Score(df)
 
 }
 \author{
