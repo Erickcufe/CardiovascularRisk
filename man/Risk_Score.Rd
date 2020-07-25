@@ -46,7 +46,7 @@ Smoking <- c(1,1,0,1,0, 1)
 Systolic_Blood_Pressure <- c(120, 137, 144, 178, 163, 139)
 Diabetes <- c(1,1,1,0,1, 1)
 cholesterol <- c(0, 5.8, 6.5, 0, 7.2, 6)
-Risk_Score.vector(diabetes = Diabetes, gender = Gender,smoke = Smoking, age = Age, sbp = Systolic_Blood_Pressure,cholesterol = cholesterol)
+Risk_Score(diabetes = Diabetes, gender = Gender,smoke = Smoking, age = Age, sbp = Systolic_Blood_Pressure,cholesterol = cholesterol)
 
 Age <- c(44, 57, 66, 50, 71, 37)
 Gender <- c(0,1,0,1,1, 1)

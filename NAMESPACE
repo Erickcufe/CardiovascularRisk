@@ -2,4 +2,7 @@
 
 S3method(Risk_Score,data.frame)
 S3method(Risk_Score,vector)
+S3method(Risk_ScoreBMI,data.frame)
+S3method(Risk_ScoreBMI,vector)
 export(Risk_Score)
+export(Risk_ScoreBMI)
