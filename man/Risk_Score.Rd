@@ -3,12 +3,15 @@
 \name{Risk_Score}
 \alias{Risk_Score}
 \alias{Risk_Score.vector}
+\alias{Risk_Score.numeric}
 \alias{Risk_Score.data.frame}
 \title{Risk Score}
 \usage{
 Risk_Score(diabetes, gender, smoke, age, sbp, cholesterol)
 
 \method{Risk_Score}{vector}(diabetes, gender, smoke, age, sbp, cholesterol)
+
+\method{Risk_Score}{numeric}(diabetes, gender, smoke, age, sbp, cholesterol)
 
 \method{Risk_Score}{data.frame}(df)
 }
@@ -29,6 +32,8 @@ Risk_Score(diabetes, gender, smoke, age, sbp, cholesterol)
 }
 \value{
 A data.frame with the Score of risk level of Cardiovascular Disease
+
+\code{NULL}
 
 \code{NULL}
 

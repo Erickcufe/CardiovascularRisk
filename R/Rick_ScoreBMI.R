@@ -104,6 +104,78 @@ Risk_ScoreBMI.vector <- function(gender, smoke, age, sbp, bmi){
 
 }
 
+#' @return \code{NULL}
+#'
+#' @rdname Risk_ScoreBMI
+#' @export
+Risk_ScoreBMI.numeric <- function(gender, smoke, age, sbp, bmi){
+  age_levels <- function(x){
+    if(x < 40){x <- 8}
+    if(x > 75){x <- 8}
+    if(x >= 70 & x <= 74){x <- 7}
+    if(x >= 65 & x <= 69){x <- 6}
+    if(x >= 60 & x <= 64){x <- 5}
+    if(x >= 55 & x <= 59){x <- 4}
+    if(x >= 50 & x <= 54){x <- 3}
+    if(x >= 45 & x <= 49){x <- 2}
+    if(x >= 40 & x <= 44){x <- 1}
+    return(x)
+  }
+
+  sbp_levels <- function(x){
+
+    if(x < 120){x <- 1}
+    if(x >= 180){x <- 5}
+    if(x >= 160 & x <= 179){x <- 4}
+    if(x >= 140 & x <= 159){x <- 3}
+    if(x >= 120 & x <= 139){x <- 2}
+
+    return(x)
+  }
+
+  bmi_levels <- function(x) {
+    if(x < 20){x <- 1}
+    if(x >= 20 & x <= 24){x <- 2}
+    if(x >= 25 & x <= 29){x <- 3}
+    if(x >= 30 & x <= 35){x <- 4}
+    if(x >= 35){x <- 5}
+
+    return(x)
+  }
+
+  age_1 <- sapply(age, age_levels)
+  sbp_1 <- sapply(sbp, sbp_levels)
+  bmi_1 <- sapply(bmi, bmi_levels)
+
+
+  df_dummy <- data.frame(Gender = gender, Smoke = smoke,
+                         Age = age,
+                         SBP = sbp, BMI = bmi)
+  df <- data.frame(Gender = gender, Smoke = smoke,
+                   Age = age_1,
+                   SBP = sbp_1, BMI = bmi_1)
+
+  if(length(which(df$Age == 8)) > 0){
+    thebad <- which(df$Age == 8)
+    message(paste("The patient number:", paste(which(df$Age == 8), collapse = ","), "has the age out of range to calculate the risk score"))
+    # df <- df[df$Age!= 8, ]
+  }
+  select <- vector()
+  for (i in 1:nrow(df)) {
+    if(df$Age[i] == 8){
+      select[i] <- "NR"
+    } else {
+      dat <- CardiovascularRisk::ref2
+      select[i] <- dat[dat$Gender == df$Gender[i] &
+                         dat$Smoke == df$Smoke[i] & dat$Age == df$Age[i] &
+                         dat$SBP == df$SBP[i] & dat$BMI == df$BMI[i],
+                       "Score"]
+    }
+  }
+
+  result <- data.frame(df_dummy, Score = select)
+  return(result)
+}
 
 #' Risk Score Body Mass Index
 #'

@@ -3,12 +3,15 @@
 \name{Risk_ScoreBMI}
 \alias{Risk_ScoreBMI}
 \alias{Risk_ScoreBMI.vector}
+\alias{Risk_ScoreBMI.numeric}
 \alias{Risk_ScoreBMI.data.frame}
 \title{Risk Score Body Mass Index}
 \usage{
 Risk_ScoreBMI(gender, smoke, age, sbp, bmi)
 
 \method{Risk_ScoreBMI}{vector}(gender, smoke, age, sbp, bmi)
+
+\method{Risk_ScoreBMI}{numeric}(gender, smoke, age, sbp, bmi)
 
 \method{Risk_ScoreBMI}{data.frame}(df)
 }
@@ -27,6 +30,8 @@ Risk_ScoreBMI(gender, smoke, age, sbp, bmi)
 }
 \value{
 A data.frame with the Score of risk level of Cardiovascular Disease
+
+\code{NULL}
 
 \code{NULL}
 
